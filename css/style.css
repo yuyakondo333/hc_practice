@@ -1,5 +1,4 @@
 /* 全共通設定 */
-
 a {
     color: #000;
     text-decoration: none;
@@ -13,15 +12,18 @@ a {
     margin: 0 auto;
     padding: 0 4%;
 }
-
 .main-image, .self-introduction, .profile {
     margin-bottom: 100px;
 }
-
 .common-section-title {
     text-align: center;
 }
-
+.main-image, .self-introduction, .profile {
+    margin-bottom: 100px;
+}
+.common-section-title {
+    text-align: center;
+}
 .common-section-title h2 {
     font-size: 32px;
     display: inline-block;
@@ -29,7 +31,6 @@ a {
     padding-bottom: 5px;
     margin-bottom: 40px;
 }
-
 .common-text {
     font-weight: bold;
     margin-bottom: 20px;
@@ -48,17 +49,11 @@ a {
     padding: 5px 10px;
     font-size: 24px;
 }
-.header-nav {
-
-}
 .header-nav-list {
     display: flex;
 }
 .header-nav-list li {
     padding-left: 20px;
-}
-.header-nav-list a {
-
 }
 
 /* メインビジュアル */
@@ -70,24 +65,17 @@ a {
 }
 
 /* 自己紹介 */
-
 .self-introduction {
     padding: 0 4%;
 }
-.common-section-title {
 
+.self-introduction {
+    padding: 0 4%;
 }
 .self-introduction-content {
     display: flex;
     justify-content: center;
     gap: 0 50px;
-}
-.textbox {
-
-}
-.name {
-    /* font-weight: bold;
-    margin-bottom: 20px; */
 }
 .description {
     line-height: 25px;
@@ -104,15 +92,6 @@ a {
 }
 
 /* プロフィール */
-.profile {
-
-}
-.common-section-title {
-
-}
-.common-section-title h2 {
-
-}
 .profile-contents {
     display: flex;
     justify-content: space-between;
@@ -130,10 +109,6 @@ a {
 .profile-description {
     margin-bottom: 20px;
 }
-.profile-image {
-    /* width: 64%;
-    height: 42.4%; */
-}
 .profile-image img {
     width: 100%;
     max-width: 150px;
@@ -141,14 +116,12 @@ a {
     height: auto;
 }
 
-
 /* フッター */
 .footer {
     text-align: center;
     border-bottom: 1px solid #000;
     padding-bottom: 10px;
 }
-
 .copy-write {
     font-size: 16px;
 }
