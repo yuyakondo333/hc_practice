@@ -1,0 +1,142 @@
+/* 全共通設定 */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* PCサイズの共通部分 */
+.container {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+.main-image, .self-introduction, .profile {
+    margin-bottom: 100px;
+}
+.common-section-title {
+    text-align: center;
+}
+.common-section-title h2 {
+    font-size: 32px;
+    display: inline-block;
+    border-bottom: 1px solid #BCBCBC;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+}
+.common-text {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ヘッダー */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.header-title {
+    color: #FAFFF2;
+    background-color: #374151;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+.header-nav-list {
+    display: flex;
+}
+.header-nav-list li {
+    padding-left: 20px;
+}
+
+/* メインビジュアル */
+.main-image {
+    width: 100%;
+    height: 600px;
+    background-image: url("../images/main.png");
+    background-size: cover;
+}
+
+/* 自己紹介 */
+.self-introduction {
+    padding: 0 4%;
+}
+.self-introduction-content {
+    display: flex;
+    justify-content: center;
+    gap: 0 50px;
+}
+.description {
+    line-height: 25px;
+}
+.self-image {
+
+    max-width: 640px;
+}
+.self-image img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* プロフィール */
+.profile-contents {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+.profile-item {
+    grid-column: 1fr;
+}
+.profile-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.profile-description {
+    margin-bottom: 20px;
+}
+.profile-image img {
+    width: 100%;
+    max-width: 150px;
+    max-width: 640px;
+    height: auto;
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+}
+.copy-write {
+    font-size: 16px;
+}
+
+/* iPhoneサイズ */
+@media (max-width: 600px) {
+    .header {
+        justify-content: center; 
+    }
+    .common-text {
+        text-align: center;
+    }
+    .self-introduction-content {
+        display: block;
+    }
+    .self-image {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .profile-contents {
+        display: block;
+    }
+    .profile-item {
+        margin-bottom: 20px;
+    }
+    .footer {
+        border-bottom: 5px solid #000;
+    }
+}
