@@ -44,9 +44,7 @@ a {
 }
 .header-nav-list {
     display: flex;
-}
-.header-nav-list li {
-    padding-left: 20px;
+    column-gap: 20px;
 }
 
 /* メインビジュアル */
