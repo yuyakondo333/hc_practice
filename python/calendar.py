@@ -62,12 +62,16 @@ class Calendar:
 if __name__ == '__main__':
     # コマンドライン引数を取得
     args = sys.argv
-
+    # 現在の時刻を取得
+    today = datetime.date.today()
+    # 現在の月をyearに格納
+    year = today.year
+    
     try:
         # 引数が1つ->ファイル名だけで実行した場合
         if len(sys.argv) == 1:
-            # 現在の時刻の月をmonthに格納
-            month = datetime.date.today().month
+            # 現在の月をmonthに格納
+            month = today.month
         # args[2]をmonthに格納
         else:
             month = int(args[2])
@@ -78,9 +82,6 @@ if __name__ == '__main__':
     except ValueError:
         # エラーメッセージを発生
         sys.exit(f"{args[2]} is neither a month number (1..12) nor a name")
-
-    # 現在の年を取得
-    year = datetime.date.today().year
 
     # カレンダーを生成して表示
     calendar = Calendar(month, year)
