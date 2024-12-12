@@ -4,31 +4,29 @@ def get_score_name(regulation_stroke, player_stroke):
     # スコア名 = 規定打数 - 実際の打数
     score_diff = regulation_stroke - player_stroke
     # 特別スコアをdictにまとめる
-    special_score = {
+    score_dict = {
         (5, 1): "コンドル",
         (5, 2): "アルバトロス",
         (4, 1): "ホールインワン",
         (3, 1): "ホールインワン",
+        2: "イーグル",
+        1: "バーディ",
+        0: "パー",
+        "bogey": "{}ボギー",
     }
-    # reg, play の組み合わせで spe_score のキーの組み合わせがあったら
-    if (regulation_stroke, player_stroke) in special_score:
+    # reg, play の組み合わせで score_dict のキーの組み合わせがあったら return で返す
+    # 要は特別スコアとなるコンドル~ホールインワンまでを優先して判定
+    if (regulation_stroke, player_stroke) in score_dict:
         # (regu, play)がキーの値を返す
-        return special_score[(regulation_stroke, player_stroke)]
+        return score_dict["bogey"].format(bogey_count if bogey_count > 1 else "")
     
-    # 通常スコア
-    # score_diff == 2でイーグルを返す
-    if score_diff == 2:
-        return "イーグル"
-    # score_diff == 1でバーディを返す
-    elif score_diff == 1:
-        return "バーディ"
-    # score_diff == 0でパーを返す
-    elif score_diff == 0:
-        return "パー"
-    # score_diff > 0でボギーを返す
+    # score_diff >= 0でイーグルを返す
+    if score_diff in score_dict:
+        return score_dict[score_diff]
+    # score_diff < 0でボギーを返す
     elif score_diff < 0:
         bogey_count = abs(score_diff)
-        return f"{bogey_count}ボギー" if bogey_count > 1 else "ボギー"
+        return f"{bogey_count if bogey_count > 1 else ''}ボギー"
     return "スコア不明"
 
 
