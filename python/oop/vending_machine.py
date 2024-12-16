@@ -8,9 +8,7 @@ class VendingMachine:
         # 初期ジュースを追加
         for _ in range(5):
             self.__juices.append(Juice("ペプシ", 150))
-        for _ in range(5):
             self.__juices.append(Juice("モンスター", 230))
-        for _ in range(5):
             self.__juices.append(Juice("いろはす", 120))
 
     def restocking(self, name, amount):
