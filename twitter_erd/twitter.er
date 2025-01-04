@@ -1,0 +1,114 @@
+[sign_ups]
+  *id {label: "bigint, not null"}
+  email {label: "varchar(255), not null, uniq" }
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[users]
+  *id {label: "bigint, not null"}
+  user_name {label: "varchar(255), not null, uniq"}
+  phone_number {label: "char, not null, uniq"}
+  display_name {label: "varchar(255), not null"}
+  introduction {label: "text, not null"}
+  place {label: "varchar(255), not null"}
+  web_site {label: "varchar(255), not null"}
+  birthdate {label: "date, not null"}
+  profile_image {label: "varchar(255), not null"}
+  avatar_image {label: "varchar(255), not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[tweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  content {label: "char(140), not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[likes]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[followers]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[notifications]
+  *id {label: "bigint, not null"}
+  visitor_id {label: "bigint, not null, FK(users)"}
+  visited_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  like_id {label: "bigint, not null, FK(likes)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[retweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[room_users]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  room_id {label: "bigint, not null, FK(rooms)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[rooms]
+  *id {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[messages]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  room_id {label: "bigint, not null, FK(rooms)"}
+  message {label: "text, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[bookmarks]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+
+sign_ups 1--1 `users`
+
+users 1--* `tweets`
+users 1--* `likes`
+
+tweets 1--* `likes`
+
+users 1--* `followers`
+
+users 1--* `notifications`
+tweets 1--* `notifications`
+likes 1--* `notifications`
+
+users 1--* `retweets`
+tweets 1--* `retweets`
+
+users 1--* `room_users`
+rooms 1--* `room_users`
+
+users 1--* `messages`
+rooms 1--* `messages`
+
+users 1--* `bookmarks`
+tweets 1--* `bookmarks`
