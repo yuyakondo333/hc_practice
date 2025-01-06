@@ -1,12 +1,7 @@
-[sign_ups]
-  *id {label: "bigint, not null"}
-  email {label: "varchar(255), not null, uniq" }
-  created_at { label: "datatime, not null"}
-  updated_at { label: "datatime, not null"}
-
 [users]
   *id {label: "bigint, not null"}
   user_name {label: "varchar(255), not null, uniq"}
+  email {label: "varchar(255), not null, uniq" }
   phone_number {label: "char, not null, uniq"}
   display_name {label: "varchar(255), not null"}
   introduction {label: "text, not null"}
@@ -34,16 +29,16 @@
 
 [followers]
   *id {label: "bigint, not null"}
-  user_id {label: "bigint, not null, FK(users)"}
+  follower_id {label: "bigint, not null, FK(users)"}
+  followed_id {label: "bigint, not null, FK(users)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
 [notifications]
   *id {label: "bigint, not null"}
-  visitor_id {label: "bigint, not null, FK(users)"}
-  visited_id {label: "bigint, not null, FK(users)"}
-  tweet_id {label: "bigint, not null, FK(tweets)"}
-  like_id {label: "bigint, not null, FK(likes)"}
+  user_id {label: "bigint, not null, FK(users)"}
+  like_id {label: "bigint, FK(likes)"}
+  follower_id {label: "bigint, FK(followers)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -70,7 +65,7 @@
   *id {label: "bigint, not null"}
   user_id {label: "bigint, not null, FK(users)"}
   room_id {label: "bigint, not null, FK(rooms)"}
-  message {label: "text, not null"}
+  content {label: "text, not null"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -88,8 +83,6 @@
 # 0 or more      *
 # 1 or more      +
 
-sign_ups 1--1 `users`
-
 users 1--* `tweets`
 users 1--* `likes`
 
@@ -98,8 +91,8 @@ tweets 1--* `likes`
 users 1--* `followers`
 
 users 1--* `notifications`
-tweets 1--* `notifications`
 likes 1--* `notifications`
+followers 1--* `notifications`
 
 users 1--* `retweets`
 tweets 1--* `retweets`
